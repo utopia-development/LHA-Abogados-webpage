@@ -6,6 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Luna Castro, Herrera & Asociados | Estrategia Legal</title>
         <link rel="stylesheet" href="style.css" />
+        <!-- agregar icono  -->
+        <link
+            rel="icon"
+            type="image/png"
+            href="images/lhalogo.jpg"
+        />
         <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -18,8 +24,34 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@400;600&display=swap"
             rel="stylesheet"
         />
+        <style id="animation-overrides">
+  .hero { position: relative; overflow: hidden; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0; }
+  .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80'); background-size: cover; background-position: center; filter: brightness(0.25); z-index: 0; }
+  .hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; }
+  .hero h1 { opacity: 0; transform: translateY(-40px); animation: fadeDown 0.9s ease forwards 0.2s; }
+  .hero p  { opacity: 0; transform: translateY(40px);  animation: fadeUp   0.9s ease forwards 0.5s; }
+  @keyframes fadeDown { to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeUp   { to { opacity:1; transform:translateY(0); } }
 
-       
+  .content-section { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .content-section.visible { opacity: 1; transform: translateY(0); }
+
+  /* Modal de servicio con blur */
+  #service-modal-overlay { backdrop-filter: blur(6px) brightness(0.6); -webkit-backdrop-filter: blur(6px) brightness(0.6); background-color: rgba(0,0,0,0.55); }
+  #service-modal-overlay .modal-content { background: #111827; border: 1px solid #374151; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
+  .service-modal-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #374151; }
+  .service-modal-icon { font-size: 2.5rem; flex-shrink: 0; line-height: 1; }
+  .service-modal-title { font-family: var(--font-headings); font-size: 2rem; color: #e5e7eb; margin: 0 0 0.5rem; }
+  .service-modal-intro { color: #9ca3af; font-size: 1.05rem; line-height: 1.7; margin: 0; }
+  .service-modal-body { color: #d1d5db; line-height: 1.8; }
+  .service-modal-body h3 { font-family: var(--font-headings); font-size: 1.1rem; color: #60a5fa; margin: 1.5rem 0 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.8rem; }
+  .service-modal-body ul { padding-left: 1.25rem; margin: 0; }
+  .service-modal-body li { margin-bottom: 0.6rem; color: #9ca3af; }
+  .service-modal-body li strong { color: #e5e7eb; }
+  .service-modal-tag { display: inline-block; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); border-radius: 4px; padding: 2px 10px; font-size: 0.78rem; font-weight: 500; margin-right: 6px; margin-bottom: 6px; }
+  #service-modal-content { animation: modalIn 0.3s ease; }
+  @keyframes modalIn { from { opacity:0; transform:scale(0.97) translateY(8px); } to { opacity:1; transform:scale(1) translateY(0); } }
+</style>
     </head>
     <body>
         <header class="site-header">
@@ -63,17 +95,20 @@
         </header>
 
         <main class="site-content">
-            <section class="hero">
-                <h1>Luna Castro, Herrera & Asociados</h1>
-                <p>
-                    Somos una firma dedicada a la defensa de sus intereses.
-                    Construimos un entorno de tranquilidad y certeza jurídica
-                    para asegurar su bienestar y potenciar el desarrollo óptimo
-                    de sus proyectos personales y de negocio.
-                </p>
+           <section class="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <h1>Luna Castro, Herrera & Asociados</h1>
+                    <p>
+                        Somos una firma dedicada a la defensa de sus intereses.
+                        Construimos un entorno de tranquilidad y certeza jurídica
+                        para asegurar su bienestar y potenciar el desarrollo óptimo
+                        de sus proyectos personales y de negocio.
+                    </p>
+                </div>
             </section>
 
-            <section id="servicios" class="content-section fade-in">
+            <section id="servicios" class="content-section">
                 <h2>Servicios Jurídicos Especializados</h2>
                 <div class="two-column-layout">
                     <div class="service-list-column">
@@ -121,7 +156,8 @@
                             entender su caso y definir los siguientes pasos.
                         </p>
                         <div class="calendar-embed-placeholder">
-                            <p>Calendario de citas (integración pendiente)</p>
+                            <!-- <p>Calendario de citas (integración pendiente)</p> -->
+                             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FMexico_City&showPrint=0&src=dXRvcGlhLmRldi5jb250YWN0b0BnbWFpbC5jb20&src=MDIwZjRhM2VlZWJiMTg0MzA2MzUwNzc3Njk2OTg4M2FlZmRmZmUwZDFiODUxYTNlYTNkZTMzMDdhYWQ4NDRlY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4ubWV4aWNhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039be5&color=%237986cb&color=%230b8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                         </div>
                     </div>
                     <div class="map-column">
@@ -257,160 +293,6 @@
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""
         ></script>
-        <script>
-// Inicialización del mapa
-document.addEventListener('DOMContentLoaded', () => {
-  // Mapa Leaflet
-  const map = L.map('map').setView([19.4326, -99.1332], 15); // Reforma, CDMX
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  L.marker([19.4326, -99.1332]).addTo(map)
-    .bindPopup('<b>Luna Castro, Herrera & Asociados</b><br>Av. Paseo de la Reforma 222');
-
-  // Scroll animations para secciones
-  const sections = document.querySelectorAll('.content-section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  sections.forEach(section => observer.observe(section));
-
-  // === Modales ===
-  const serviceModalOverlay = document.getElementById('service-modal-overlay');
-  const serviceModalContent = document.getElementById('service-modal-content');
-  const closeButtons = document.querySelectorAll('.close-button');
-
-  // Cerrar modales
-  closeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const overlay = btn.closest('.modal-overlay');
-      overlay.classList.remove('active');
-      setTimeout(() => overlay.style.display = 'none', 400);
-    });
-  });
-
-  // Cerrar al hacer clic fuera
-  document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        overlay.classList.remove('active');
-        setTimeout(() => overlay.style.display = 'none', 400);
-      }
-    });
-  });
-
-  // Datos de servicios con imágenes reales de stock (alta calidad)
-  const servicesData = {
-    familia: {
-      title: "Derecho Familiar",
-      image: "https://source.unsplash.com/1200x600/?family-law,parents-children",
-      description: `
-        <p>Especializados en divorcios, custodia, pensiones alimenticias, adopciones y sucesiones. Protegemos los derechos de la familia con sensibilidad y firmeza.</p>
-        <ul style="margin-top: 1.5rem; padding-left: 1.2rem;">
-          <li>Divorcio express y contencioso</li>
-          <li>Guarda y custodia</li>
-          <li>Régimen de visitas</li>
-          <li>Adopciones y tutela</li>
-        </ul>
-      `
-    },
-    deudor: {
-      title: "Defensa del Deudor y Protección Patrimonial",
-      image: "https://source.unsplash.com/1200x600/?legal-protection,shield-law",
-      description: `
-        <p>Estrategias legales para proteger tu patrimonio frente a embargos, demandas y acreedores. Reestructuración de deudas y defensa efectiva.</p>
-        <p style="margin-top: 1rem;">Conocemos todas las herramientas legales para darte tranquilidad financiera.</p>
-      `
-    },
-    mercantil: {
-      title: "Derecho Mercantil",
-      image: "https://source.unsplash.com/1200x600/?business-contract,corporate-law",
-      description: `
-        <p>Constitución de sociedades, contratos comerciales, fusiones, adquisiciones y resolución de disputas entre empresas.</p>
-      `
-    },
-    laboral: {
-      title: "Derecho Laboral y Cumplimiento Corporativo",
-      image: "https://source.unsplash.com/1200x600/?labor-law,workplace",
-      description: `
-        <p>Asesoría a empresas y trabajadores en despidos, contratos colectivos, cumplimiento normativo y prevención de riesgos laborales.</p>
-      `
-    },
-    internacional: {
-      title: "Derecho Internacional",
-      image: "https://source.unsplash.com/1200x600/?international-law,globe-legal",
-      description: `
-        <p>Contratos internacionales, comercio exterior, extradición y litigios transfronterizos. Experiencia en tratados y convenios bilaterales.</p>
-      `
-    },
-    inmobiliario: {
-      title: "Derecho Inmobiliario",
-      image: "https://source.unsplash.com/1200x600/?real-estate-law,property",
-      description: `
-        <p>Compra-venta, arrendamientos, regularización de propiedades, fideicomisos y litigios inmobiliarios en la CDMX y todo México.</p>
-      `
-    }
-  };
-
-  // Abrir modal de servicio
-  document.querySelectorAll('.service-list li').forEach(item => {
-    item.addEventListener('click', () => {
-      const id = item.getAttribute('data-service-id');
-      const data = servicesData[id];
-
-      if (!data) return;
-
-      serviceModalContent.innerHTML = `
-        <img src="${data.image}" alt="${data.title}" class="service-modal-image">
-        <div class="service-modal-body">
-          <h3>${data.title}</h3>
-          ${data.description}
-        </div>
-      `;
-
-      serviceModalOverlay.style.display = 'flex';
-      setTimeout(() => serviceModalOverlay.classList.add('active'), 10);
-    });
-  });
-
-  // Modal "Quiénes Somos" (puedes agregar team members aquí)
-  const nosotrosModal = document.getElementById('nosotros-modal-overlay');
-  document.getElementById('footer-nosotros-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    nosotrosModal.style.display = 'flex';
-    setTimeout(() => nosotrosModal.classList.add('active'), 10);
-  });
-
-  // Password modal (sin cambios, solo mejor transición)
-  const passwordModal = document.getElementById('password-modal-overlay');
-  document.getElementById('dashboard-icon').addEventListener('click', () => {
-    passwordModal.style.display = 'flex';
-    setTimeout(() => passwordModal.classList.add('active'), 10);
-  });
-
-  // Formulario password (ejemplo)
-  document.getElementById('password-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = document.getElementById('password-input');
-    const error = document.getElementById('password-error');
-    
-    if (input.value === "demo2026") {  // Cambia esta clave
-      alert("Acceso concedido al Dashboard (simulado)");
-      passwordModal.classList.remove('active');
-      setTimeout(() => passwordModal.style.display = 'none', 400);
-    } else {
-      error.style.display = 'block';
-      setTimeout(() => error.style.display = 'none', 3000);
-    }
-  });
-});
-</script>
+        <script src="script.js"></script>
     </body>
 </html>
