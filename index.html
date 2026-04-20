@@ -159,6 +159,23 @@
                             <!-- <p>Calendario de citas (integración pendiente)</p> -->
                              <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FMexico_City&showPrint=0&src=dXRvcGlhLmRldi5jb250YWN0b0BnbWFpbC5jb20&src=MDIwZjRhM2VlZWJiMTg0MzA2MzUwNzc3Njk2OTg4M2FlZmRmZmUwZDFiODUxYTNlYTNkZTMzMDdhYWQ4NDRlY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4ubWV4aWNhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039be5&color=%237986cb&color=%230b8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                         </div>
+                        <!-- Google Calendar Appointment Scheduling begin -->
+<link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+<script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+<script>
+(function() {
+  var target = document.currentScript;
+  window.addEventListener('load', function() {
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2C5hiKNSoyOrefkOJqXXLOmdOcLfWjaytAQIMzODBwNkCtJwsg1eky-BunUzu2xFUFkAwkz-bd?gv=true',
+      color: '#039BE5',
+      label: "PROGRAMAR UNA CITA",
+      target,
+    });
+  });
+})();
+</script>
+<!-- end Google Calendar Appointment Scheduling -->
                     </div>
                     <div class="map-column">
                         <h3>Nuestra Ubicación</h3>
